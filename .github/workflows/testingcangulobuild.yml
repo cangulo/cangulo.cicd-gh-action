@@ -1,0 +1,21 @@
+name: Testing cangulo.cicd
+
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Downloading cangulo.cicd
+    steps:
+      - name: Download latest cangulo.cicd
+        uses: cangulo/cangulo.cicd-gh-action@main
+        with:
+          version: latest
+      - name: Display help of the latest version
+        run: ./cangulo.cicd/cangulo.cicd --root . --help --verbosity verbose
+      - name: Download cangulo.cicd version 0.0.18
+        uses: cangulo/cangulo.cicd-gh-action@main
+        with:
+          version: 0.0.18
+      - name: Display help of the version 0.0.18
+        run: ./cangulo.cicd/cangulo.cicd --root . --help --verbosity verbose
